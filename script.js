@@ -56,3 +56,31 @@ var alphaLevel = 1
     }
     body.appendChild(newTile);
   }
+
+// Flash CheckerBoard
+
+  var body = document.getElementsByTagName('body')[0];
+
+  function changeColor(tile) {
+    tile.style.backgroundColor = 'hsla(' + randomColorNum(360) + ',' + randomColorNum(100) + '%,' + randomColorNum(100) + '%,' + Math.random()+ ')';
+  }
+
+    for(var i = 0; i < 81; i++) {
+      var newTile = document.createElement('div');
+
+      function randomColorNum (multiplier) {
+        return Math.floor(Math.random() * multiplier);
+      }
+      newTile.style.width = '11.1%';
+      newTile.style.float = 'left';
+      newTile.style.paddingBottom = '11.1%';
+      changeColor(newTile);
+      body.appendChild(newTile);
+    }
+
+
+var allDivs = Array.prototype.slice.call(document.getElementsByTagName('div'));
+
+setInterval(function () {
+   allDivs.forEach(changeColor);
+ }, 2000);
